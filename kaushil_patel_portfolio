@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaushil Patel | Systems Engineer & Cybersecurity Specialist</title>
+    <meta name="description" content="IT Infrastructure, Systems Engineering, and Cybersecurity portfolio of Kaushil Patel, based in Toronto, ON.">
+
+    <!-- Google Fonts: Inter (UI/Body) & JetBrains Mono (Technical Tags/Code) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+                    },
+                    colors: {
+                        navy: {
+                            950: '#0b1120', // Primary dark background
+                            900: '#111827', // Elevated card surface
+                            800: '#1e293b', // Subtle borders & hover states
+                        },
+                        accent: {
+                            cyan: '#38bdf8',
+                            teal: '#2dd4bf',
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Theme Initialization Script (Prevents Flash of Wrong Theme) -->
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem('kp-portfolio-theme');
+                if (savedTheme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                } else {
+                    document.documentElement.classList.add('dark');
+                }
+            } catch (err) {
+                // Default to dark mode if localStorage is restricted
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-navy-950 dark:text-slate-200 font-sans antialiased selection:bg-accent-cyan/30 selection:text-sky-900 dark:selection:text-sky-200 transition-colors duration-200 overflow-x-hidden">
+
+    <!-- =====================================================================
+         1. STICKY NAVIGATION BAR
+    ====================================================================== -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-md bg-white/85 dark:bg-navy-950/85 border-b border-slate-200 dark:border-slate-800/80 transition-colors duration-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Brand Mark -->
+                <a href="#top" class="flex items-center gap-2 group focus:outline-none">
+                    <span class="font-mono text-sm sm:text-base font-semibold tracking-tight text-slate-900 dark:text-white">
+                        <span class="text-sky-600 dark:text-accent-cyan">KP</span>
+                        <span class="text-slate-400 dark:text-slate-600 mx-1">//</span>
+                        <span class="group-hover:text-sky-600 dark:group-hover:text-accent-teal transition-colors">Portfolio</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Main Navigation">
+                    <a href="#skills" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors">Skills</a>
+                    <a href="#projects" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors">Projects</a>
+                    <a href="#experience" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors">Experience</a>
+                    <a href="#credentials" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors">Credentials</a>
+                    <a href="#contact" class="px-3 py-2 rounded-lg text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-800/60 transition-colors">Contact</a>
+
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle" type="button" aria-label="Toggle Light and Dark Theme"
+                        class="ml-2 p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-navy-900 text-slate-600 dark:text-slate-300 hover:text-sky-600 dark:hover:text-accent-cyan hover:border-sky-400/50 transition-all">
+                        <!-- Sun Icon (shown in dark mode) -->
+                        <svg class="hidden dark:block w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                        </svg>
+                        <!-- Moon Icon (shown in light mode) -->
+                        <svg class="block dark:hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+                    </button>
+                </nav>
+
+                <!-- Mobile Actions (Theme Toggle + Hamburger) -->
+                <div class="flex items-center gap-2 md:hidden">
+                    <button id="theme-toggle-mobile" type="button" aria-label="Toggle Light and Dark Theme"
+                        class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-navy-900 text-slate-600 dark:text-slate-300">
+                        <svg class="hidden dark:block w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+                        </svg>
+                        <svg class="block dark:hidden w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+                    </button>
+
+                    <button id="mobile-menu-btn" type="button" aria-label="Open Navigation Menu" aria-expanded="false"
+                        class="p-2.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-navy-900 text-slate-700 dark:text-slate-200">
+                        <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg id="menu-icon-close" class="hidden w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-navy-950 px-4 pt-2 pb-4 space-y-1">
+            <a href="#skills" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-navy-900">Skills</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-navy-900">Projects</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-navy-900">Experience</a>
+            <a href="#credentials" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-navy-900">Credentials</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-3 rounded-lg text-base font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-navy-900">Contact</a>
+        </div>
+    </header>
+
+    <main id="top" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- =====================================================================
+             2. HERO SECTION
+        ====================================================================== -->
+        <section class="relative py-16 sm:py-24 lg:py-28 border-b border-slate-200 dark:border-slate-800/80">
+            <!-- Subtle Ambient Background Glow -->
+            <div class="pointer-events-none absolute -top-10 right-0 w-72 h-72 sm:w-96 sm:h-96 rounded-full bg-sky-500/10 dark:bg-accent-cyan/10 blur-3xl -z-10"></div>
+
+            <div class="max-w-3xl">
+                <!-- Location & Availability Badge -->
+                <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/30 text-teal-700 dark:text-accent-teal font-mono text-xs sm:text-sm mb-6">
+                    <span class="relative flex h-2.5 w-2.5">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-teal-500 dark:bg-accent-teal"></span>
+                    </span>
+                    <span>Toronto, ON (Greater Toronto Area) &bull; Open to Opportunities</span>
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Kaushil Patel
+                </h1>
+
+                <!-- Role Subheading -->
+                <p class="mt-4 font-mono text-sm sm:text-base lg:text-lg text-sky-600 dark:text-accent-cyan font-medium">
+                    Systems Engineer | Technical Support Analyst | Cybersecurity Specialist
+                </p>
+
+                <!-- Value Proposition -->
+                <p class="mt-6 text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+                    6+ years of enterprise experience engineering Microsoft-centric endpoint infrastructures (800+ devices), automating workflows with PowerShell, and enforcing Zero Trust security principles across critical infrastructure and healthcare environments.
+                </p>
+
+                <!-- Primary Call-To-Action Buttons -->
+                <div class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+                    <a href="#projects"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-medium text-sm sm:text-base bg-sky-600 hover:bg-sky-700 dark:bg-accent-cyan dark:hover:bg-sky-300 text-white dark:text-navy-950 shadow-sm hover:shadow transition-all">
+                        <span>View Projects</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+                        </svg>
+                    </a>
+
+                    <a href="mailto:kaushilpatel1296@gmail.com"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-medium text-sm sm:text-base border border-slate-300 dark:border-slate-700 bg-white dark:bg-navy-900 text-slate-800 dark:text-slate-100 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                        <span>Contact Me</span>
+                    </a>
+
+                    <!-- REPLACE: Update href with your hosted Resume PDF file path (e.g., "./Kaushil_Patel_Resume.pdf") -->
+                    <a href="./Kaushil_Patel_Resume.pdf" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-medium text-sm sm:text-base border border-slate-300 dark:border-slate-700 bg-white dark:bg-navy-900 text-slate-800 dark:text-slate-100 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-all">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                        <span>Resume (PDF)</span>
+                    </a>
+                </div>
+
+                <!-- Quick Social Links -->
+                <div class="mt-8 flex flex-wrap items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-400">
+                    <a href="https://www.linkedin.com/in/kaushil-patel-67b856179" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 hover:text-sky-600 dark:hover:text-accent-cyan transition-colors py-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+
+                    <!-- REPLACE: Update with your actual GitHub profile URL -->
+                    <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 hover:text-sky-600 dark:hover:text-accent-cyan transition-colors py-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+
+                    <a href="mailto:kaushilpatel1296@gmail.com"
+                        class="inline-flex items-center gap-2 hover:text-sky-600 dark:hover:text-accent-cyan transition-colors py-1 font-mono text-xs sm:text-sm">
+                        <span>kaushilpatel1296@gmail.com</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. TECHNICAL SKILLS MATRIX
+        ====================================================================== -->
+        <section id="skills" class="py-16 sm:py-20 border-b border-slate-200 dark:border-slate-800/80 scroll-mt-16">
+            <div class="mb-10">
+                <p class="font-mono text-xs sm:text-sm uppercase tracking-widest text-sky-600 dark:text-accent-cyan font-semibold">01 // Capabilities</p>
+                <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Technical Skills Matrix</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Category 1: Endpoint & Device Management -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:border-sky-500/50 dark:hover:border-accent-cyan/40 transition-all">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="p-2.5 rounded-xl bg-sky-500/10 text-sky-600 dark:text-accent-cyan">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Endpoint &amp; Device Management</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Microsoft Intune (MDM/MAM)</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">MECM / SCCM</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Windows 10/11 OS Deployments</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Win32/MSIX Packaging</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">VMware vSphere/ESXi</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Hyper-V</span>
+                    </div>
+                </div>
+
+                <!-- Category 2: Identity, Cloud & M365 -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:border-teal-500/50 dark:hover:border-accent-teal/40 transition-all">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="p-2.5 rounded-xl bg-teal-500/10 text-teal-600 dark:text-accent-teal">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Identity, Cloud &amp; M365</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Active Directory (GPO, DNS, DHCP, RBAC)</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Microsoft Entra ID</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Microsoft 365 (Exchange, Teams, OneDrive)</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">SharePoint Online</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Windows Server</span>
+                    </div>
+                </div>
+
+                <!-- Category 3: Security & Networking -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:border-sky-500/50 dark:hover:border-accent-cyan/40 transition-all">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="p-2.5 rounded-xl bg-sky-500/10 text-sky-600 dark:text-accent-cyan">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Security &amp; Networking</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Zero Trust Architecture</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Endpoint Hardening</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Vulnerability Audits</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Threat Detection &amp; Wireshark</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">TCP/IP</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Cisco Secure Client</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">SonicWALL VPN</span>
+                    </div>
+                </div>
+
+                <!-- Category 4: Automation & ITSM -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:border-teal-500/50 dark:hover:border-accent-teal/40 transition-all">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="p-2.5 rounded-xl bg-teal-500/10 text-teal-600 dark:text-accent-teal">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+                            </svg>
+                        </div>
+                        <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Automation &amp; ITSM</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">PowerShell Scripting</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">ServiceNow (ITSM)</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">ITIL v4 Processes</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">SLA Management (95%+)</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Root Cause Analysis (RCA)</span>
+                        <span class="px-3 py-1.5 rounded-lg font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Asset Lifecycle Management</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             4. FEATURED PROJECTS & HANDS-ON LABS
+        ====================================================================== -->
+        <section id="projects" class="py-16 sm:py-20 border-b border-slate-200 dark:border-slate-800/80 scroll-mt-16">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+                <div>
+                    <p class="font-mono text-xs sm:text-sm uppercase tracking-widest text-sky-600 dark:text-accent-cyan font-semibold">02 // Proof of Work</p>
+                    <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Featured Projects &amp; Hands-On Labs</h2>
+                </div>
+
+                <!-- Interactive Filter Buttons -->
+                <div class="flex flex-wrap gap-2" role="group" aria-label="Filter projects by category">
+                    <button type="button" data-filter="all" class="filter-btn active px-3.5 py-2 rounded-lg font-mono text-xs font-medium bg-sky-600 text-white dark:bg-accent-cyan dark:text-navy-950 transition-all">All</button>
+                    <button type="button" data-filter="automation" class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs font-medium bg-slate-200/70 text-slate-700 hover:bg-slate-200 dark:bg-navy-900 dark:text-slate-300 dark:border dark:border-slate-800 dark:hover:border-slate-700 transition-all">Automation</button>
+                    <button type="button" data-filter="endpoint-infra" class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs font-medium bg-slate-200/70 text-slate-700 hover:bg-slate-200 dark:bg-navy-900 dark:text-slate-300 dark:border dark:border-slate-800 dark:hover:border-slate-700 transition-all">Endpoint &amp; Infra</button>
+                    <button type="button" data-filter="security" class="filter-btn px-3.5 py-2 rounded-lg font-mono text-xs font-medium bg-slate-200/70 text-slate-700 hover:bg-slate-200 dark:bg-navy-900 dark:text-slate-300 dark:border dark:border-slate-800 dark:hover:border-slate-700 transition-all">Security</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Project Card 1: PowerShell AD & Endpoint Remediation Toolkit -->
+                <article data-category="automation" class="project-card flex flex-col justify-between rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:-translate-y-1 hover:border-sky-500/60 dark:hover:border-accent-cyan/50 transition-all duration-200">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-700 dark:text-accent-teal">Automation</span>
+                            <span class="font-mono text-xs text-slate-400">PRJ-01</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-snug">
+                            PowerShell AD &amp; Endpoint Remediation Toolkit
+                        </h3>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Modular PowerShell automation scripts for bulk Active Directory group administration, automated registry hardening, and Intune proactive application remediation across 800+ Windows endpoints.
+                        </p>
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">PowerShell</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Active Directory</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Intune Remediations</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-3">
+                        <button type="button" data-project-id="powershell-toolkit"
+                            class="open-modal-btn flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-sky-600/10 hover:bg-sky-600 text-sky-700 hover:text-white dark:bg-accent-cyan/10 dark:text-accent-cyan dark:hover:bg-accent-cyan dark:hover:text-navy-950 transition-colors">
+                            <span>Read Write-Up</span>
+                        </button>
+                        <!-- REPLACE: Update href with your actual GitHub Repo URL -->
+                        <a href="https://github.com/your-github-username/powershell-ad-remediation-toolkit" target="_blank" rel="noopener noreferrer" aria-label="View PowerShell Toolkit on GitHub"
+                            class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">
+                            <span>GitHub</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project Card 2: Enterprise SCCM / Intune Windows 11 Deployment Lab -->
+                <article data-category="endpoint-infra" class="project-card flex flex-col justify-between rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:-translate-y-1 hover:border-sky-500/60 dark:hover:border-accent-cyan/50 transition-all duration-200">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-sky-500/10 text-sky-700 dark:text-accent-cyan">Endpoint &amp; Infra</span>
+                            <span class="font-mono text-xs text-slate-400">PRJ-02</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-snug">
+                            Enterprise SCCM / Intune Windows 11 Deployment Lab
+                        </h3>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Co-managed Windows 11 zero-touch deployment pipeline integrating MECM/SCCM, Intune Autopilot, Win32/MSIX packaging, BitLocker encryption, and Entra ID Conditional Access baselines.
+                        </p>
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Microsoft Intune</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">MECM / SCCM</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Win32/MSIX</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Entra ID</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-3">
+                        <button type="button" data-project-id="intune-sccm-lab"
+                            class="open-modal-btn flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-sky-600/10 hover:bg-sky-600 text-sky-700 hover:text-white dark:bg-accent-cyan/10 dark:text-accent-cyan dark:hover:bg-accent-cyan dark:hover:text-navy-950 transition-colors">
+                            <span>Read Write-Up</span>
+                        </button>
+                        <!-- REPLACE: Update href with your actual GitHub Repo URL -->
+                        <a href="https://github.com/your-github-username/sccm-intune-win11-lab" target="_blank" rel="noopener noreferrer" aria-label="View SCCM and Intune Lab on GitHub"
+                            class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">
+                            <span>GitHub</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project Card 3: Active Threat Hunting & Network Forensics — Hack The Box Labs -->
+                <article data-category="security" class="project-card flex flex-col justify-between rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:-translate-y-1 hover:border-sky-500/60 dark:hover:border-accent-cyan/50 transition-all duration-200">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-700 dark:text-indigo-300">Security</span>
+                            <span class="font-mono text-xs text-slate-400">PRJ-03</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-snug">
+                            Active Threat Hunting &amp; Network Forensics — Hack The Box Labs
+                        </h3>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Blue-team investigative write-ups dissecting PCAP captures in Wireshark/tshark and Windows Security Event Logs to trace lateral movement, credential abuse, and C2 beaconing.
+                        </p>
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Hack The Box</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Wireshark / tshark</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">EVTX Log Analysis</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Threat Hunting</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-3">
+                        <button type="button" data-project-id="forensics-htb"
+                            class="open-modal-btn flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-sky-600/10 hover:bg-sky-600 text-sky-700 hover:text-white dark:bg-accent-cyan/10 dark:text-accent-cyan dark:hover:bg-accent-cyan dark:hover:text-navy-950 transition-colors">
+                            <span>Read Write-Up</span>
+                        </button>
+                        <!-- REPLACE: Update href with your actual GitHub Repo URL -->
+                        <a href="https://github.com/your-github-username/htb-threat-hunting-writeups" target="_blank" rel="noopener noreferrer" aria-label="View Hack The Box Write-Ups on GitHub"
+                            class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">
+                            <span>GitHub</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Project Card 4: VMware vSphere & Windows Server Virtualization Lab -->
+                <article data-category="endpoint-infra" class="project-card flex flex-col justify-between rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm hover:-translate-y-1 hover:border-sky-500/60 dark:hover:border-accent-cyan/50 transition-all duration-200">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="font-mono text-xs font-semibold px-2.5 py-1 rounded-md bg-sky-500/10 text-sky-700 dark:text-accent-cyan">Endpoint &amp; Infra</span>
+                            <span class="font-mono text-xs text-slate-400">PRJ-04</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white leading-snug">
+                            VMware vSphere &amp; Windows Server Virtualization Lab
+                        </h3>
+                        <p class="mt-3 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Segmented multi-VM enterprise infrastructure lab running on VMware ESXi / Hyper-V with Windows Server Domain Controllers, DNS/DHCP failover, hardened GPO baselines, and automated snapshot testing.
+                        </p>
+                        <div class="mt-5 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">VMware vSphere/ESXi</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">Windows Server</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">DNS / DHCP / GPO</span>
+                            <span class="px-2.5 py-1 rounded-md font-mono text-[11px] bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800">PowerCLI</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 pt-5 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-3">
+                        <button type="button" data-project-id="vmware-server-lab"
+                            class="open-modal-btn flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium bg-sky-600/10 hover:bg-sky-600 text-sky-700 hover:text-white dark:bg-accent-cyan/10 dark:text-accent-cyan dark:hover:bg-accent-cyan dark:hover:text-navy-950 transition-colors">
+                            <span>Read Write-Up</span>
+                        </button>
+                        <!-- REPLACE: Update href with your actual GitHub Repo URL -->
+                        <a href="https://github.com/your-github-username/vmware-windows-server-lab" target="_blank" rel="noopener noreferrer" aria-label="View VMware Virtualization Lab on GitHub"
+                            class="inline-flex items-center justify-center gap-1.5 px-3.5 py-2.5 rounded-xl text-sm font-medium border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">
+                            <span>GitHub</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             5. PROFESSIONAL EXPERIENCE TIMELINE
+        ====================================================================== -->
+        <section id="experience" class="py-16 sm:py-20 border-b border-slate-200 dark:border-slate-800/80 scroll-mt-16">
+            <div class="mb-10">
+                <p class="font-mono text-xs sm:text-sm uppercase tracking-widest text-sky-600 dark:text-accent-cyan font-semibold">03 // Career History</p>
+                <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Professional Experience</h2>
+            </div>
+
+            <!-- Vertical Timeline -->
+            <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 sm:ml-4 space-y-10">
+                <!-- Role 1: Liberty Utilities Canada Corp. -->
+                <div class="relative pl-8 sm:pl-10">
+                    <!-- Timeline Dot -->
+                    <span class="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-sky-600 dark:bg-accent-cyan ring-4 ring-slate-50 dark:ring-navy-950"></span>
+
+                    <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Technical Support Analyst (Endpoint &amp; Infrastructure Administration)</h3>
+                                <p class="mt-1 text-sky-600 dark:text-accent-cyan font-medium">Liberty Utilities Canada Corp. &bull; Oakville, ON</p>
+                            </div>
+                            <span class="inline-flex items-center self-start px-3 py-1 rounded-full font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shrink-0">
+                                September 2020 &ndash; November 2026
+                            </span>
+                        </div>
+
+                        <ul class="mt-5 space-y-2.5 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed list-disc pl-5 marker:text-sky-500 dark:marker:text-accent-teal">
+                            <li>Engineered and automated Windows 10/11 OS deployments, security patching, and Win32/MSIX application packaging across 800+ enterprise endpoints using Microsoft Intune and MECM/SCCM, improving software currency and reducing manual provisioning time.</li>
+                            <li>Administered Microsoft 365 services (Teams, OneDrive, Exchange), SharePoint Online governance, and hybrid identity environments (Active Directory, Entra ID, GPOs), enforcing RBAC and Zero Trust principles.</li>
+                            <li>Developed and deployed PowerShell scripts for automated endpoint configuration, registry modifications, application remediation, and bulk Active Directory group administration.</li>
+                            <li>Acted as a Tier 2/3 technical escalation point in ServiceNow for complex hardware, software, and network incidents (TCP/IP, DNS, Cisco Secure Client, SonicWALL VPN), executing deep root-cause analysis while maintaining a 95%+ SLA compliance rate.</li>
+                            <li>Supported vulnerability remediation, endpoint hardening, incident response, and audit readiness across cross-functional GIS, SCADA, Infrastructure, and Security teams.</li>
+                            <li>Managed the end-to-end IT asset lifecycle, coordinated vendor RMAs/repairs, authored SOPs and knowledge base articles, and mentored junior analysts.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Role 2: Health Hub Patient Engagement Solution -->
+                <div class="relative pl-8 sm:pl-10">
+                    <!-- Timeline Dot -->
+                    <span class="absolute -left-[9px] top-1.5 h-4 w-4 rounded-full bg-slate-400 dark:bg-slate-600 ring-4 ring-slate-50 dark:ring-navy-950"></span>
+
+                    <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-7 shadow-sm">
+                        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                            <div>
+                                <h3 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">Service Desk Analyst (Co-op)</h3>
+                                <p class="mt-1 text-sky-600 dark:text-accent-cyan font-medium">Health Hub Patient Engagement Solution &bull; Mississauga, ON</p>
+                            </div>
+                            <span class="inline-flex items-center self-start px-3 py-1 rounded-full font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-800 shrink-0">
+                                September 2019 &ndash; December 2019
+                            </span>
+                        </div>
+
+                        <ul class="mt-5 space-y-2.5 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed list-disc pl-5 marker:text-sky-500 dark:marker:text-accent-teal">
+                            <li>Delivered Level-I &amp; Level-II hands-on troubleshooting for bedside patient terminals, clinical workstations, and network equipment (TCP/IP, VPN) across multi-site healthcare facilities to ensure continuous uptime.</li>
+                            <li>Facilitated server and workstation patch management and software upgrades in strict alignment with enterprise IT and healthcare compliance standards.</li>
+                            <li>Conducted physical and network security audits across multiple clinical sites, identifying vulnerabilities and coordinating faulty hardware RMA replacements with external vendors.</li>
+                            <li>Administered user access and permissions via Active Directory to safeguard sensitive patient data while documenting root-cause resolutions within ITSM SLA targets.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             6. CERTIFICATIONS & EDUCATION
+        ====================================================================== -->
+        <section id="credentials" class="py-16 sm:py-20 border-b border-slate-200 dark:border-slate-800/80 scroll-mt-16">
+            <div class="mb-10">
+                <p class="font-mono text-xs sm:text-sm uppercase tracking-widest text-sky-600 dark:text-accent-cyan font-semibold">04 // Qualifications</p>
+                <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Certifications &amp; Education</h2>
+            </div>
+
+            <!-- Certifications Sub-grid -->
+            <h3 class="font-mono text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold mb-4">Industry Certifications</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <!-- Cert 1: CompTIA Security+ -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                                Active
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">CompTIA Security+</h4>
+                        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">CompTIA</p>
+                        <p class="mt-3 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Validates core operational skills in threat detection, Zero Trust architecture, identity &amp; access management, vulnerability audits, and incident response.
+                        </p>
+                    </div>
+                    <!-- REPLACE: Update href with your Credly verification link -->
+                    <a href="https://www.credly.com/badges/your-security-plus-badge-id" target="_blank" rel="noopener noreferrer"
+                        class="mt-5 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-sky-600 dark:text-accent-cyan hover:underline">
+                        <span>Verify Credential</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Cert 2: ITIL v4 Foundation -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs font-medium bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                                </svg>
+                                Active
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">ITIL v4 Foundation</h4>
+                        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">AXELOS / PeopleCert</p>
+                        <p class="mt-3 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Demonstrates mastery of modern IT service management (ITSM) practices including incident, problem, change enablement, and continual improvement.
+                        </p>
+                    </div>
+                    <!-- REPLACE: Update href with your Credly or PeopleCert verification link -->
+                    <a href="https://www.credly.com/badges/your-itil-v4-badge-id" target="_blank" rel="noopener noreferrer"
+                        class="mt-5 inline-flex items-center gap-1.5 font-mono text-xs font-medium text-sky-600 dark:text-accent-cyan hover:underline">
+                        <span>Verify Credential</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Cert 3: CCSP (In Progress) -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full font-mono text-xs font-medium bg-amber-500/10 text-amber-700 dark:text-amber-300 border border-amber-500/20">
+                                <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                In Progress
+                            </span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Certified Cloud Security Professional (CCSP)</h4>
+                        <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">ISC2</p>
+                        <p class="mt-3 text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Advancing deep expertise in cloud security architecture, cloud data protection, platform infrastructure hardening, and legal/compliance governance.
+                        </p>
+                    </div>
+                    <p class="mt-5 font-mono text-xs text-slate-400 dark:text-slate-500">Active Study Track</p>
+                </div>
+            </div>
+
+            <!-- Education Sub-grid -->
+            <h3 class="font-mono text-xs uppercase tracking-widest text-slate-500 dark:text-slate-400 font-semibold mb-4">Education</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Education 1: Sheridan College -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono text-xs font-medium bg-sky-500/10 text-sky-700 dark:text-accent-cyan border border-sky-500/20">
+                                Diploma
+                            </span>
+                            <span class="font-mono text-xs text-slate-500 dark:text-slate-400">Jan 2019 &ndash; Aug 2020</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Diploma in Information Technology Support Services</h4>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Sheridan College &bull; Brampton, ON</p>
+                    </div>
+                </div>
+
+                <!-- Education 2: Gujarat Technological University -->
+                <div class="rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-6 shadow-sm flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-3">
+                            <span class="inline-flex items-center px-2.5 py-1 rounded-full font-mono text-xs font-medium bg-sky-500/10 text-sky-700 dark:text-accent-cyan border border-sky-500/20">
+                                Bachelor of Engineering
+                            </span>
+                            <span class="font-mono text-xs text-slate-500 dark:text-slate-400">June 2014 &ndash; July 2018</span>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 dark:text-white">Bachelor of Engineering in Information Technology</h4>
+                        <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Gujarat Technological University</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             7. CONTACT SECTION
+        ====================================================================== -->
+        <section id="contact" class="py-16 sm:py-24 scroll-mt-16">
+            <div class="rounded-3xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 p-8 sm:p-12 text-center shadow-sm relative overflow-hidden">
+                <div class="pointer-events-none absolute -bottom-16 left-1/2 -translate-x-1/2 w-80 h-40 rounded-full bg-teal-500/10 blur-3xl"></div>
+
+                <p class="font-mono text-xs sm:text-sm uppercase tracking-widest text-sky-600 dark:text-accent-cyan font-semibold">05 // Get In Touch</p>
+                <h2 class="mt-2 text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Let's Connect</h2>
+                <p class="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+                    Hiring for a Systems Engineering, Endpoint Administration, Technical Support, or Cybersecurity role in the Greater Toronto Area? Reach out directly by email or connect on LinkedIn.
+                </p>
+
+                <!-- Interactive Email Copy Box -->
+                <div class="mt-8 inline-flex flex-col sm:flex-row items-center gap-3 p-2 rounded-2xl bg-slate-100 dark:bg-navy-950 border border-slate-200 dark:border-slate-800 max-w-full">
+                    <a href="mailto:kaushilpatel1296@gmail.com" id="contact-email-display" class="px-4 py-2 font-mono text-sm sm:text-base text-slate-800 dark:text-slate-200 hover:text-sky-600 dark:hover:text-accent-cyan transition-colors break-all">
+                        kaushilpatel1296@gmail.com
+                    </a>
+                    <button id="copy-email-btn" type="button" data-email="kaushilpatel1296@gmail.com"
+                        class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-medium text-sm bg-sky-600 hover:bg-sky-700 dark:bg-accent-cyan dark:hover:bg-sky-300 text-white dark:text-navy-950 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184" />
+                        </svg>
+                        <span>Copy Email</span>
+                    </button>
+                </div>
+
+                <!-- External Profile & Direct Email Buttons -->
+                <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+                    <a href="mailto:kaushilpatel1296@gmail.com"
+                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 bg-white dark:bg-navy-950 text-slate-700 dark:text-slate-200 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                        </svg>
+                        <span>Send Email</span>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/kaushil-patel-67b856179" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 bg-white dark:bg-navy-950 text-slate-700 dark:text-slate-200 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+
+                    <!-- REPLACE: Update with your actual GitHub profile URL -->
+                    <a href="https://github.com/your-github-username" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium border border-slate-300 dark:border-slate-700 bg-white dark:bg-navy-950 text-slate-700 dark:text-slate-200 hover:border-sky-500 dark:hover:border-accent-cyan hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                        </svg>
+                        <span>GitHub</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================================
+         FOOTER
+    ====================================================================== -->
+    <footer class="border-t border-slate-200 dark:border-slate-800/80 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            <p>&copy; <span id="current-year">2026</span> Kaushil Patel. Built for clarity &amp; speed.</p>
+            <a href="#top" class="font-mono hover:text-sky-600 dark:hover:text-accent-cyan transition-colors">&uarr; Back to top</a>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         INTERACTIVE PROJECT WRITE-UP MODAL (4-Step Format)
+    ====================================================================== -->
+    <div id="project-modal" class="hidden fixed inset-0 z-50 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div id="modal-backdrop" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm transition-opacity"></div>
+
+        <!-- Modal Panel Container -->
+        <div class="flex min-h-full items-center justify-center p-4 sm:p-6">
+            <div class="relative w-full max-w-3xl rounded-2xl bg-white dark:bg-navy-900 border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
+                <!-- Modal Header -->
+                <div class="flex items-start justify-between gap-4 p-6 border-b border-slate-200 dark:border-slate-800">
+                    <div>
+                        <span id="modal-category" class="font-mono text-xs font-semibold uppercase tracking-wider text-sky-600 dark:text-accent-cyan">Project Write-Up</span>
+                        <h3 id="modal-title" class="mt-1 text-xl sm:text-2xl font-bold text-slate-900 dark:text-white"></h3>
+                    </div>
+                    <button id="close-modal-btn" type="button" aria-label="Close modal"
+                        class="p-2 rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-white dark:hover:bg-slate-800 transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Modal Body -->
+                <div class="p-6 space-y-6 max-h-[75vh] overflow-y-auto text-sm sm:text-base">
+                    <!-- Step 1: Objective -->
+                    <div>
+                        <h4 class="font-mono text-xs uppercase tracking-widest text-teal-600 dark:text-accent-teal font-semibold mb-2">01. Objective</h4>
+                        <p id="modal-objective" class="text-slate-600 dark:text-slate-300 leading-relaxed"></p>
+                    </div>
+
+                    <!-- Step 2: Stack -->
+                    <div>
+                        <h4 class="font-mono text-xs uppercase tracking-widest text-teal-600 dark:text-accent-teal font-semibold mb-2">02. Stack &amp; Tools</h4>
+                        <div id="modal-stack" class="flex flex-wrap gap-2"></div>
+                    </div>
+
+                    <!-- Step 3: Implementation + Code Snippet -->
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-2">
+                            <h4 class="font-mono text-xs uppercase tracking-widest text-teal-600 dark:text-accent-teal font-semibold">03. Implementation</h4>
+                            <button id="copy-code-btn" type="button"
+                                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md font-mono text-xs bg-slate-100 hover:bg-slate-200 dark:bg-navy-950 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 transition-colors">
+                                <span>Copy Snippet</span>
+                            </button>
+                        </div>
+                        <p id="modal-implementation" class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3"></p>
+                        <pre class="rounded-xl bg-slate-950 text-slate-100 p-4 overflow-x-auto border border-slate-800 font-mono text-xs sm:text-sm leading-relaxed"><code id="modal-code"></code></pre>
+                    </div>
+
+                    <!-- Step 4: Result -->
+                    <div class="rounded-xl bg-teal-500/10 border border-teal-500/20 p-4">
+                        <h4 class="font-mono text-xs uppercase tracking-widest text-teal-700 dark:text-accent-teal font-semibold mb-1.5">04. Result &amp; Impact</h4>
+                        <p id="modal-result" class="text-slate-700 dark:text-slate-200 leading-relaxed"></p>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="px-6 py-4 bg-slate-50 dark:bg-navy-950/60 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
+                    <a id="modal-github-link" href="#" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-2 text-sm font-medium text-sky-600 dark:text-accent-cyan hover:underline">
+                        <span>View Full Repository on GitHub</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </a>
+                    <button id="close-modal-footer-btn" type="button"
+                        class="px-4 py-2 rounded-lg text-sm font-medium bg-slate-200 hover:bg-slate-300 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 transition-colors">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         TOAST NOTIFICATION (Non-blocking alternative to alert())
+    ====================================================================== -->
+    <div id="toast" role="status" aria-live="polite"
+        class="fixed bottom-5 right-5 z-50 translate-y-20 opacity-0 pointer-events-none transition-all duration-300 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-navy-950 shadow-lg font-medium text-sm">
+        <svg class="w-4 h-4 text-accent-teal dark:text-teal-600 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+        <span id="toast-message">Copied to clipboard!</span>
+    </div>
+
+    <!-- =====================================================================
+         JAVASCRIPT INTERACTIVITY
+    ====================================================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set dynamic copyright year
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // -----------------------------------------------------------------
+            // 1. Toast Notification Helper
+            // -----------------------------------------------------------------
+            let toastTimer = null;
+            function showToast(message) {
+                const toast = document.getElementById('toast');
+                const toastMsg = document.getElementById('toast-message');
+                if (!toast || !toastMsg) return;
+
+                toastMsg.textContent = message;
+                toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+                toast.classList.add('translate-y-0', 'opacity-100');
+
+                clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => {
+                    toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+                    toast.classList.remove('translate-y-0', 'opacity-100');
+                }, 2800);
+            }
+
+            // -----------------------------------------------------------------
+            // 2. Reliable Clipboard Copy Helper (iFrame-safe)
+            // -----------------------------------------------------------------
+            function copyTextToClipboard(text, successMessage) {
+                try {
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = text;
+                    tempTextArea.setAttribute('readonly', '');
+                    tempTextArea.style.position = 'fixed';
+                    tempTextArea.style.left = '-9999px';
+                    document.body.appendChild(tempTextArea);
+                    tempTextArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempTextArea);
+                    showToast(successMessage);
+                } catch (err) {
+                    showToast('Unable to copy automatically. Please copy manually.');
+                }
+            }
+
+            // -----------------------------------------------------------------
+            // 3. Light / Dark Theme Toggle
+            // -----------------------------------------------------------------
+            function toggleTheme() {
+                const html = document.documentElement;
+                const isDark = html.classList.toggle('dark');
+                try {
+                    localStorage.setItem('kp-portfolio-theme', isDark ? 'dark' : 'light');
+                } catch (err) {
+                    // Ignore storage restrictions
+                }
+            }
+
+            const themeBtn = document.getElementById('theme-toggle');
+            const themeBtnMobile = document.getElementById('theme-toggle-mobile');
+            if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+            if (themeBtnMobile) themeBtnMobile.addEventListener('click', toggleTheme);
+
+            // -----------------------------------------------------------------
+            // 4. Mobile Hamburger Menu
+            // -----------------------------------------------------------------
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIconOpen = document.getElementById('menu-icon-open');
+            const menuIconClose = document.getElementById('menu-icon-close');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function setMobileMenuState(isOpen) {
+                if (!mobileMenu || !mobileMenuBtn) return;
+                mobileMenu.classList.toggle('hidden', !isOpen);
+                menuIconOpen.classList.toggle('hidden', isOpen);
+                menuIconClose.classList.toggle('hidden', !isOpen);
+                mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const isCurrentlyHidden = mobileMenu.classList.contains('hidden');
+                    setMobileMenuState(isCurrentlyHidden);
+                });
+            }
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => setMobileMenuState(false));
+            });
+
+            // -----------------------------------------------------------------
+            // 5. Project Category Filtering
+            // -----------------------------------------------------------------
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const selected = btn.getAttribute('data-filter');
+
+                    // Update active button styles
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-sky-600', 'text-white', 'dark:bg-accent-cyan', 'dark:text-navy-950');
+                        b.classList.add('bg-slate-200/70', 'text-slate-700', 'dark:bg-navy-900', 'dark:text-slate-300');
+                    });
+                    btn.classList.remove('bg-slate-200/70', 'text-slate-700', 'dark:bg-navy-900', 'dark:text-slate-300');
+                    btn.classList.add('bg-sky-600', 'text-white', 'dark:bg-accent-cyan', 'dark:text-navy-950');
+
+                    // Filter cards
+                    projectCards.forEach(card => {
+                        const category = card.getAttribute('data-category');
+                        if (selected === 'all' || category === selected) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            // -----------------------------------------------------------------
+            // 6. Project Write-Up Modal Data & Controls
+            // -----------------------------------------------------------------
+            // REPLACE: Update the githubUrl values below with your actual repository URLs
+            const projectWriteUps = {
+                'powershell-toolkit': {
+                    category: 'Automation // PRJ-01',
+                    title: 'PowerShell AD & Endpoint Remediation Toolkit',
+                    objective: 'Eliminate repetitive Tier 2/3 administrative toil and enforce Zero Trust identity hygiene across 800+ endpoints by automating bulk Active Directory group updates, stale account audits, and Intune Proactive Remediation registry checks.',
+                    stack: ['PowerShell 5.1 / 7', 'Active Directory Module', 'Microsoft Intune Remediations', 'Windows Registry', 'CSV Logging'],
+                    implementation: 'Created modular, idempotent scripts with structured error handling and transcript logging. The snippet below pairs a bulk AD RBAC group audit with an Intune detection script that verifies hardened SMBv1/TLS registry compliance.',
+                    code: `<#
+.SYNOPSIS
+    Audits stale Active Directory accounts and checks endpoint registry hardening.
+#>
+[CmdletBinding()]
+param (
+    [int]$InactiveDays = 90,
+    [string]$ReportPath = ".\\AD_Stale_Accounts_$(Get-Date -Format 'yyyyMMdd').csv"
+)
+
+try {
+    Import-Module ActiveDirectory -ErrorAction Stop
+    $Cutoff = (Get-Date).AddDays(-$InactiveDays)
+
+    $StaleUsers = Get-ADUser -Filter { Enabled -eq $true } -Properties LastLogonDate, Department |
+        Where-Object { $_.LastLogonDate -lt $Cutoff -and $_.LastLogonDate -ne $null } |
+        Select-Object SamAccountName, Name, Department, LastLogonDate
+
+    $StaleUsers | Export-Csv -Path $ReportPath -NoTypeInformation -Encoding UTF8
+    Write-Output "Exported $($StaleUsers.Count) inactive accounts to $ReportPath"
+
+    # Intune Detection Check: Ensure SMBv1 is disabled
+    $SmbKey = Get-ItemProperty -Path "HKLM:\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters" -Name "SMB1" -ErrorAction SilentlyContinue
+    if ($SmbKey.SMB1 -eq 0) { Write-Output "COMPLIANT: SMBv1 Disabled"; Exit 0 }
+    else { Write-Output "NON-COMPLIANT: Remediation Required"; Exit 1 }
+}
+catch {
+    Write-Error "Script execution failed: $($_.Exception.Message)"
+    Exit 1
+}`,
+                    result: 'Reduced recurring weekly AD group/audit tasks from 45+ minutes to under 15 seconds while automating endpoint registry and application remediation across the fleet with zero manual touch.',
+                    githubUrl: 'https://github.com/your-github-username/powershell-ad-remediation-toolkit'
+                },
+                'intune-sccm-lab': {
+                    category: 'Endpoint & Infra // PRJ-02',
+                    title: 'Enterprise SCCM / Intune Windows 11 Deployment Lab',
+                    objective: 'Architect a repeatable, co-managed Windows 11 deployment and application lifecycle pipeline combining MECM/SCCM and Microsoft Intune Autopilot with automated Win32/MSIX packaging and Zero Trust compliance policies.',
+                    stack: ['Microsoft Intune (MDM/MAM)', 'MECM / SCCM', 'Windows 11 Enterprise', 'Win32 / MSIX Packaging', 'Entra ID Conditional Access'],
+                    implementation: 'Built dynamic Entra ID device groups driven by Autopilot group tags, wrapped enterprise Win32 apps using IntuneWinAppUtil with PowerShell detection rules, and enforced BitLocker + Defender baselines before granting M365 access.',
+                    code: `# 1. Package Win32 App for Microsoft Intune Deployment
+.\\IntuneWinAppUtil.exe -c "C:\\AppSource\\CiscoSecureClient" \`
+    -s "Setup.msi" -o "C:\\IntunePackages" -q
+
+# 2. Enroll Device into Windows Autopilot with Department Group Tag
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+Install-Script -Name Get-WindowsAutopilotInfo -Force
+Get-WindowsAutopilotInfo -Online -GroupTag "CORP-WIN11-CO-MGMT" -Assign
+
+# 3. Verify BitLocker Protection Post-Provisioning
+$Vol = Get-BitLockerVolume -MountPoint "C:"
+if ($Vol.ProtectionStatus -ne "On") { Exit 1 }
+Write-Output "Compliant: BitLocker Active ($($Vol.EncryptionMethod))"
+Exit 0`,
+                    result: 'Cut workstation provisioning time from multi-hour manual imaging to a standardized ~25-minute zero-touch deployment with 100% BitLocker compliance and automated patch rings.',
+                    githubUrl: 'https://github.com/your-github-username/sccm-intune-win11-lab'
+                },
+                'forensics-htb': {
+                    category: 'Security // PRJ-03',
+                    title: 'Active Threat Hunting & Network Forensics — Hack The Box Labs',
+                    objective: 'Strengthen blue-team incident response and root-cause analysis by investigating simulated enterprise breaches in Hack The Box defensive labs—correlating PCAP network traffic with Windows Event Logs to reconstruct full attacker timelines.',
+                    stack: ['Hack The Box', 'Wireshark / tshark', 'Windows Event Logs (EVTX)', 'PowerShell Get-WinEvent', 'TCP/IP & DNS Analysis'],
+                    implementation: 'Combined automated tshark packet extraction with PowerShell EVTX filtering to rapidly isolate anomalous outbound DNS/HTTP C2 beacons, brute-force logon bursts (Event ID 4625), and suspicious PowerShell script blocks (Event ID 4104).',
+                    code: `# 1. Extract suspicious HTTP/DNS indicators from a PCAP using tshark
+tshark -r incident_capture.pcap -Y "http.request || dns.qry.name" \\
+  -T fields -e frame.time_utc -e ip.src -e ip.dst -e http.host -e dns.qry.name
+
+# 2. Hunt for Failed Logons (Event ID 4625) in exported Security.evtx
+Get-WinEvent -FilterHashtable @{ Path = '.\\Security.evtx'; Id = 4625 } |
+  ForEach-Object {
+      [PSCustomObject]@{
+          TimeCreated = $_.TimeCreated
+          TargetUser  = $_.Properties[5].Value
+          SourceIP    = $_.Properties[19].Value
+      }
+  } | Group-Object SourceIP | Sort-Object Count -Descending | Select-Object -First 5`,
+                    result: 'Produced repeatable triage playbooks that pinpoint attacker IOCs, initial access vectors, and lateral movement in minutes—directly supporting enterprise incident response and vulnerability audits.',
+                    githubUrl: 'https://github.com/your-github-username/htb-threat-hunting-writeups'
+                },
+                'vmware-server-lab': {
+                    category: 'Endpoint & Infra // PRJ-04',
+                    title: 'VMware vSphere & Windows Server Virtualization Lab',
+                    objective: 'Build an isolated, production-like enterprise server lab on VMware vSphere/ESXi and Hyper-V to safely validate Active Directory GPO changes, DNS/DHCP failover, and Windows Server security patches prior to rollout.',
+                    stack: ['VMware vSphere / ESXi', 'Hyper-V', 'Windows Server', 'Active Directory (GPO/DNS/DHCP)', 'VMware PowerCLI'],
+                    implementation: 'Provisioned a segmented VLAN virtual switch hosting redundant Domain Controllers, a member file/app server, and Windows 11 test clients. Automated pre-patch VM snapshots and AD health checks via PowerCLI and PowerShell.',
+                    code: `# 1. Automate Pre-Patch Snapshots across Lab VMs using VMware PowerCLI
+Connect-VIServer -Server "vcenter.lab.local"
+$TargetVMs = @("DC01-LAB", "DC02-LAB", "APP01-LAB")
+$Stamp = Get-Date -Format "yyyyMMdd-HHmm"
+
+foreach ($VM in $TargetVMs) {
+    Get-VM -Name $VM | New-Snapshot -Name "PrePatch-$Stamp" -Description "Automated pre-patch baseline" -Memory:$false
+    Write-Output "Snapshot created for $VM"
+}
+
+# 2. Verify Active Directory Replication & DNS Service Health
+repadmin /replsummary
+dcdiag /test:DNS /q`,
+                    result: 'Established a zero-risk staging environment for testing GPO hardening, patch Tuesday rollouts, and disaster recovery snapshots—preventing configuration regressions in production.',
+                    githubUrl: 'https://github.com/your-github-username/vmware-windows-server-lab'
+                }
+            };
+
+            const modal = document.getElementById('project-modal');
+            const modalBackdrop = document.getElementById('modal-backdrop');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const closeModalFooterBtn = document.getElementById('close-modal-footer-btn');
+            const copyCodeBtn = document.getElementById('copy-code-btn');
+
+            function openProjectModal(projectId) {
+                const data = projectWriteUps[projectId];
+                if (!data || !modal) return;
+
+                document.getElementById('modal-category').textContent = data.category;
+                document.getElementById('modal-title').textContent = data.title;
+                document.getElementById('modal-objective').textContent = data.objective;
+                document.getElementById('modal-implementation').textContent = data.implementation;
+                document.getElementById('modal-code').textContent = data.code;
+                document.getElementById('modal-result').textContent = data.result;
+                document.getElementById('modal-github-link').href = data.githubUrl;
+
+                const stackContainer = document.getElementById('modal-stack');
+                stackContainer.innerHTML = '';
+                data.stack.forEach(item => {
+                    const pill = document.createElement('span');
+                    pill.className = 'px-2.5 py-1 rounded-md font-mono text-xs bg-slate-100 dark:bg-navy-950 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-800';
+                    pill.textContent = item;
+                    stackContainer.appendChild(pill);
+                });
+
+                modal.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            }
+
+            function closeProjectModal() {
+                if (!modal) return;
+                modal.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+
+            document.querySelectorAll('.open-modal-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    openProjectModal(btn.getAttribute('data-project-id'));
+                });
+            });
+
+            if (closeModalBtn) closeModalBtn.addEventListener('click', closeProjectModal);
+            if (closeModalFooterBtn) closeModalFooterBtn.addEventListener('click', closeProjectModal);
+            if (modalBackdrop) modalBackdrop.addEventListener('click', closeProjectModal);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                    closeProjectModal();
+                }
+            });
+
+            if (copyCodeBtn) {
+                copyCodeBtn.addEventListener('click', () => {
+                    const codeText = document.getElementById('modal-code')?.textContent || '';
+                    copyTextToClipboard(codeText, 'Code snippet copied to clipboard!');
+                });
+            }
+
+            // -----------------------------------------------------------------
+            // 7. Copy Email Button
+            // -----------------------------------------------------------------
+            const copyEmailBtn = document.getElementById('copy-email-btn');
+            if (copyEmailBtn) {
+                copyEmailBtn.addEventListener('click', () => {
+                    const email = copyEmailBtn.getAttribute('data-email') || 'kaushilpatel1296@gmail.com';
+                    copyTextToClipboard(email, `Copied ${email} to clipboard!`);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
